@@ -2,7 +2,7 @@ FROM alpine:3.7
 
 LABEL author="hurisheng"
 
-RUN apk add --no-cache bash openssh-server
+RUN apk add --no-cache bash openssh-server rsync
 
 # persistent sshd config and root authorized key
 VOLUME [ "/etc/ssh", "/root/.ssh" ]
