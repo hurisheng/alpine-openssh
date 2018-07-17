@@ -1,8 +1,11 @@
-FROM alpine:3.7
+FROM alpine:latest
 
 LABEL author="hurisheng"
 
-RUN apk add --no-cache bash openssh-server rsync
+RUN apk add --no-cache bash openssh-server rsync tzdata \
+  && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+  && echo "Asia/Shanghai" > /etc/timezone \
+  && apk --no-cache del tzdata
 
 # persistent sshd config and root authorized key
 VOLUME [ "/etc/ssh", "/root/.ssh" ]
