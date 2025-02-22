@@ -9,4 +9,4 @@ VOLUME [ "/etc/ssh", "/root/.ssh" ]
 
 EXPOSE 22
 
-CMD [ "/usr/sbin/sshd", "-Dd", "-h", "/etc/ssh/ssh_host_rsa_key" ]
+CMD [ "/usr/sbin/sshd", "-D", "-h", "/etc/ssh/ssh_host_rsa_key" ]
