@@ -4,9 +4,9 @@ LABEL author="hurisheng"
 
 RUN apk add --no-cache bash openssh-server rsync
 
-# persistent sshd config and root authorized key
-VOLUME [ "/etc/ssh", "/root/.ssh" ]
+# sshd config directory, host keys directory and root public keys directory
+VOLUME [ "/etc/ssh/host_keys", "/etc/ssh/sshd_config.d", "/root/.ssh" ]
 
 EXPOSE 22
 
-CMD [ "/usr/sbin/sshd", "-D", "-h", "/etc/ssh/ssh_host_rsa_key" ]
+CMD [ "/usr/sbin/sshd", "-D", "-h", "/etc/ssh/host_keys/ssh_host_ed25519_key" ]
